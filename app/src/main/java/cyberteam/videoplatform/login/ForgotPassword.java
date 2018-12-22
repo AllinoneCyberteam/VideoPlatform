@@ -1,4 +1,4 @@
-package cyberteam.videoplatform.Login;
+package cyberteam.videoplatform.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

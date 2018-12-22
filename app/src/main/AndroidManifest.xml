@@ -20,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login.Login" />
+        <activity android:name=".login.Login" />
         <activity android:name=".CategorySelection" />
         <activity android:name=".VideoActivity" />
-        <activity android:name=".Login.ForgotPassword" />
-        <activity android:name=".Login.SignUp"></activity>
+        <activity android:name=".login.ForgotPassword" />
+        <activity android:name=".login.SignUp" />
     </application>
 
 </manifest>
