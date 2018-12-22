@@ -32,7 +32,7 @@ public class SignUp extends AppCompatActivity {
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (newPassword.getText().toString().equals(confirmPassword.getText().toString()))
+                if (!EmailId.getText().toString().equals("") && newPassword.getText().toString().equals(confirmPassword.getText().toString()) && !newPassword.getText().toString().equals("") && !confirmPassword.getText().toString().equals(""))
                     mAuth.createUserWithEmailAndPassword(EmailId.getText().toString(), confirmPassword.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override

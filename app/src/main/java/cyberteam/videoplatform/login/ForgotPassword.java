@@ -30,16 +30,17 @@ public class ForgotPassword extends AppCompatActivity {
         Reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.sendPasswordResetEmail(EmailId.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Snackbar snackbar = Snackbar.make(mConstraintLayout,
-                                        "Link to reset your password has been seen to your\nemail Id: " + EmailId.getText().toString(),
-                                        Snackbar.LENGTH_INDEFINITE);
-                                snackbar.show();
-                            }
-                        });
+                if (!EmailId.getText().toString().equals(""))
+                    mAuth.sendPasswordResetEmail(EmailId.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Snackbar snackbar = Snackbar.make(mConstraintLayout,
+                                            "Link to reset your password has been seen to your\nemail Id: " + EmailId.getText().toString(),
+                                            Snackbar.LENGTH_INDEFINITE);
+                                    snackbar.show();
+                                }
+                            });
             }
         });
     }
