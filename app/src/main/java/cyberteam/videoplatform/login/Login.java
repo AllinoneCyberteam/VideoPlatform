@@ -6,11 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,7 +22,6 @@ import cyberteam.videoplatform.CategorySelection;
 import cyberteam.videoplatform.R;
 
 public class Login extends AppCompatActivity {
-    private static final String TAG = "Login";
     Button Login;
     Button forgotPassword;
     EditText userId;
@@ -32,6 +31,7 @@ public class Login extends AppCompatActivity {
     String Password;
     FirebaseAuth mAuth;
     ConstraintLayout mConstraintLayout;
+    Snackbar snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +44,29 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 EmailId = userId.getText().toString();
                 Password = userPassword.getText().toString();
-                mAuth.signInWithEmailAndPassword(EmailId, Password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful())
-                                    startActivity(new Intent(Login.this, CategorySelection.class));
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Snackbar snackbar = Snackbar.make(mConstraintLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
-                        snackbar.show();
-                        Log.d(TAG, "onFailure: " + e.getMessage());
-                    }
-                });
+                if (!EmailId.equals("") && !Password.equals("")) {
+                    mAuth.signInWithEmailAndPassword(EmailId, Password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful())
+                                        startActivity(new Intent(Login.this, CategorySelection.class));
+                                    else {
+                                        Toast.makeText(Login.this, "Invalid Details", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Snackbar snackbar = Snackbar.make(mConstraintLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
+                            snackbar.show();
+                        }
+                    });
+                } else {
+                    snackbar = Snackbar.make(v, "Enter Details", Snackbar.LENGTH_INDEFINITE);
+                    snackbar.show();
+                }
+
             }
         });
 
@@ -92,5 +100,12 @@ public class Login extends AppCompatActivity {
         if (mAuth.getCurrentUser() != null)
             startActivity(new Intent(Login.this, CategorySelection.class));
         super.onStart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+        System.exit(0);
     }
 }
