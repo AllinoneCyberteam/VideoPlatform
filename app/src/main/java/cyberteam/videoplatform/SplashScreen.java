@@ -1,7 +1,10 @@
 package cyberteam.videoplatform;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import cyberteam.videoplatform.login.Login;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -9,5 +12,6 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        startActivity(new Intent(SplashScreen.this, Login.class));
     }
 }

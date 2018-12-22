@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "234573558603",
+    "firebase_url": "https://videoaplication-application.firebaseio.com",
+    "project_id": "videoaplication-application",
+    "storage_bucket": "videoaplication-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234573558603:android:354cc82b12db8253",
+        "android_client_info": {
+          "package_name": "cyberteam.videoplatform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234573558603-hicf158auliomc79p3kni52aoj3pdg82.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cyberteam.videoplatform",
+            "certificate_hash": "3ab96641fe3eaaca6f05f49ded9d9f318891b1d1"
+          }
+        },
+        {
+          "client_id": "234573558603-a9rjmlpu8s4plertleir521l5la2lh1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDc0DHbUIPFQ4RhiOMlBKbgsiQnZkWa5CM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234573558603-a9rjmlpu8s4plertleir521l5la2lh1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
