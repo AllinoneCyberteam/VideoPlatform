@@ -1,7 +1,9 @@
-package cyberteam.videoplatform;
+package cyberteam.videoplatform.Login;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import cyberteam.videoplatform.R;
 
 public class Login extends AppCompatActivity {
 
