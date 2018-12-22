@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">VideoPlatform</string>
-    <string name="login_id">LOGIN ID</string>
+    <string name="login_id">Email ID</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="not_have_a_account_yet">Not have a account yet?</string>

@@ -7,7 +7,7 @@
     tools:context=".Login.Login">
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/loginid"
         android:layout_width="323dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -15,31 +15,32 @@
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="AutoFill" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="@+id/loginid"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintStart_toStartOf="@+id/loginid"
+        app:layout_constraintTop_toBottomOf="@+id/loginid"
         tools:ignore="AutoFill" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,9 +51,9 @@
         android:textColorHint="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintEnd_toStartOf="@+id/forgotpassword"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/textView"
@@ -66,11 +67,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/login"
         app:layout_constraintVertical_bias="0.503" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/newuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/click_here"
@@ -82,7 +83,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/forgotpassword"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -90,9 +91,9 @@
         android:layout_marginLeft="20dp"
         android:text="@string/forgot_password"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toEndOf="@+id/login"
+        app:layout_constraintTop_toTopOf="@+id/login"
         app:layout_constraintVertical_bias="0.51" />
 </android.support.constraint.ConstraintLayout>
