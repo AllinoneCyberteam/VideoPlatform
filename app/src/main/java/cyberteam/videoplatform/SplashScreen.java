@@ -8,17 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import cyberteam.videoplatform.login.Login;
 
 public class SplashScreen extends AppCompatActivity {
-    int splashTime = 5000;
+    int splashTime = 3000;
     Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-
-        // Initialize the splash screen here
-
 
         mHandler.postDelayed(new Runnable() {
             @Override
