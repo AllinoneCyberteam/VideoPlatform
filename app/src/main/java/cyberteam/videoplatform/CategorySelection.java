@@ -1,17 +1,20 @@
 package cyberteam.videoplatform;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CategorySelection extends AppCompatActivity implements View.OnClickListener{
+import com.google.firebase.auth.FirebaseAuth;
 
+public class CategorySelection extends AppCompatActivity implements View.OnClickListener {
+
+    FirebaseAuth mAuth;
+    private TextView logout;
     private TextView t;
-    private CardView b;
     private ImageView i1;
     private ImageView i2;
     private ImageView i3;
@@ -22,46 +25,44 @@ public class CategorySelection extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_selection);
 
-        b=(CardView) findViewById(R.id.logout);
-        i1= (ImageView) findViewById(R.id.ent_id);
-        i2= (ImageView) findViewById(R.id.info_id);
-        i3= (ImageView) findViewById(R.id.news_id);
-        i4= (ImageView) findViewById(R.id.tech_id);
+        CardView b = (CardView) findViewById(R.id.logout);
+        i1 = (ImageView) findViewById(R.id.ent_id);
+        i2 = (ImageView) findViewById(R.id.info_id);
+        i3 = (ImageView) findViewById(R.id.news_id);
+        i4 = (ImageView) findViewById(R.id.tech_id);
+        logout = findViewById(R.id.textView5);
+        mAuth = FirebaseAuth.getInstance();
 
         b.setOnClickListener(this);
         i1.setOnClickListener(this);
         i2.setOnClickListener(this);
         i3.setOnClickListener(this);
         i4.setOnClickListener(this);
+        logout.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
 
-        if(v==i1)
-        {
+        if (v == i1) {
             startActivity(new Intent(CategorySelection.this, VideoActivity.class));
-        }
-        else if(v==i3)
-        {
+        } else if (v == i3) {
             startActivity(new Intent(CategorySelection.this, VideoActivity.class));
-        }
-        else if(v==i2)
-        {
+        } else if (v == i2) {
             startActivity(new Intent(CategorySelection.this, VideoActivity.class));
-        }
-        else if(v==i4)
-        {
+        } else if (v == i4) {
             startActivity(new Intent(CategorySelection.this, VideoActivity.class));
-        }
-     /*  else if(v==b) {
-            firebaseAuth.signOut();
+        } else if (v == logout) {
+            mAuth.signOut();
             finish();
-            startActivity(new Intent(MainActivity.this, login.class));
-        }*/
-
+        }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+        System.exit(0);
+    }
 }
