@@ -11,10 +11,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CategorySelection extends AppCompatActivity implements View.OnClickListener {
-
     FirebaseAuth mAuth;
     private TextView logout;
-    private TextView t;
     private ImageView i1;
     private ImageView i2;
     private ImageView i3;
@@ -30,6 +28,7 @@ public class CategorySelection extends AppCompatActivity implements View.OnClick
         i2 = (ImageView) findViewById(R.id.info_id);
         i3 = (ImageView) findViewById(R.id.news_id);
         i4 = (ImageView) findViewById(R.id.tech_id);
+        TextView t = findViewById(R.id.textUserEmail);
         logout = findViewById(R.id.textView5);
         mAuth = FirebaseAuth.getInstance();
 
@@ -39,6 +38,8 @@ public class CategorySelection extends AppCompatActivity implements View.OnClick
         i3.setOnClickListener(this);
         i4.setOnClickListener(this);
         logout.setOnClickListener(this);
+        if (mAuth.getCurrentUser() != null)
+            t.setText(mAuth.getCurrentUser().getEmail());
 
     }
 
