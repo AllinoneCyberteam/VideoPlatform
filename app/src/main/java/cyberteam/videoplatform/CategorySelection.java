@@ -38,9 +38,8 @@ public class CategorySelection extends AppCompatActivity implements View.OnClick
         i3.setOnClickListener(this);
         i4.setOnClickListener(this);
         logout.setOnClickListener(this);
-        if (mAuth.getCurrentUser() != null)
-            t.setText(mAuth.getCurrentUser().getEmail());
-
+        if (mAuth.getCurrentUser() != null && getIntent().getExtras() != null)
+            t.setText(getIntent().getExtras().getString("UserName"));
     }
 
     @Override
