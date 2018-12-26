@@ -106,7 +106,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
             }
             case R.id.newuser: {
-                startActivity(new Intent(Login.this, ForgotPassword.class));
+                startActivity(new Intent(Login.this, SignUp.class));
                 break;
             }
         }
