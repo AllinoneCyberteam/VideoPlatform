@@ -18,4 +18,6 @@
     <string name="change_password">Change Password</string>
     <string name="save_password">Save Password</string>
     <string name="current_password">Current Password</string>
+    <string name="username_not_available">UserName not available</string>
+    <string name="username_available">UserName Available</string>
 </resources>
