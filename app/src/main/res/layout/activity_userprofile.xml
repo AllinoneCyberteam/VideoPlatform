@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    tools:context=".login.UserProfile">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/profile"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Username"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Shivam0608" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/Change_Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/email_id"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/EmailId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/EmailId"
+            android:layout_width="227dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="AutoFill,LabelFor"
+            tools:text="kumarshivamray0656@gmail.com" />
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/Change_Password"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/change_password"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ChangePasswordLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ChangePasswordLayout"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Change_Password">
+
+        <EditText
+            android:id="@+id/curPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/current_password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/newPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="AutoFill" />
+
+        <EditText
+            android:id="@+id/newPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/cfnPassword"
+            app:layout_constraintEnd_toEndOf="@+id/curPassword"
+            app:layout_constraintStart_toStartOf="@+id/curPassword"
+            app:layout_constraintTop_toBottomOf="@+id/curPassword"
+            tools:ignore="AutoFill" />
+
+        <EditText
+            android:id="@+id/cfnPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/Save"
+            app:layout_constraintEnd_toEndOf="@+id/newPassword"
+            app:layout_constraintStart_toStartOf="@+id/newPassword"
+            app:layout_constraintTop_toBottomOf="@+id/newPassword"
+            tools:ignore="AutoFill" />
+
+        <Button
+            android:id="@+id/Save"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save_password"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cfnPassword"
+            app:layout_constraintStart_toStartOf="@+id/cfnPassword"
+            app:layout_constraintTop_toBottomOf="@+id/cfnPassword" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

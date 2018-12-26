@@ -3,11 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="cyberteam.videoplatform">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
 
     <application
         android:allowBackup="true"
@@ -15,20 +14,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".SplashScreen">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.Login" />
-        <activity android:name=".CategorySelection" />
-        <activity android:name=".VideoActivity" />
-        <activity android:name=".login.ForgotPassword" />
-        <activity android:name=".login.SignUp" />
+        <activity
+            android:name=".login.Login"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".login.SignUp"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".login.UserProfile"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".login.ForgotPassword"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".CategorySelection"
+            android:theme="@style/CategorySelectionTheme" />
     </application>
 
 </manifest>

@@ -45,7 +45,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = mAuth.getCurrentUser();
-                mMap.put("UserName", UserName.getText().toString());
+                mMap.put("UserProfile", UserName.getText().toString());
                 if (user != null) {
                     mDatabaseReference.child("users").child(user.getUid()).setValue(mMap);
                 }

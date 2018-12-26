@@ -5,6 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
     tools:context=".login.Login">

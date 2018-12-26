@@ -27,17 +27,6 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         mAuth = FirebaseAuth.getInstance();
 
-        if (mAuth.getCurrentUser() == null)
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(SplashScreen.this, Login.class));
-                }
-            }, splashTime);
-    }
-
-    @Override
-    protected void onStart() {
         if (mAuth.getCurrentUser() != null) {
             uid = mAuth.getCurrentUser().getUid();
             FirebaseDatabase.getInstance(DatabaseLink)
@@ -46,7 +35,7 @@ public class SplashScreen extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             String UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
-                            Intent intent = new Intent(SplashScreen.this, CategorySelection.class);
+                            Intent intent = new Intent(SplashScreen.this, Login.class);
                             intent.putExtra("UserName", UserName);
                             startActivity(intent);
                         }
@@ -56,7 +45,13 @@ public class SplashScreen extends AppCompatActivity {
                             throw databaseError.toException();
                         }
                     });
+        } else {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(new Intent(SplashScreen.this, Login.class));
+                }
+            }, splashTime);
         }
-        super.onStart();
     }
 }

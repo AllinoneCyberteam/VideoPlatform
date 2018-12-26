@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,13 +26,13 @@ import cyberteam.videoplatform.CategorySelection;
 import cyberteam.videoplatform.R;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "Login";
     Button Login;
     Button forgotPassword;
     EditText userId;
     EditText userPassword;
     TextView newUser;
     String uid;
+    String UserName;
     String EmailId;
     String Password;
     String DatabaseLink = "https://videoaplication-application.firebaseio.com";
@@ -50,31 +49,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Login.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
         newUser.setOnClickListener(this);
-
-//        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                if (firebaseAuth.getCurrentUser() != null) {
-//                    String uid = firebaseAuth.getCurrentUser().getUid();
-//                    FirebaseDatabase.getInstance(DatabaseLink)
-//                            .getReference(uid)
-//                            .addListenerForSingleValueEvent(new ValueEventListener() {
-//                                @Override
-//                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                    String UserName = dataSnapshot.child("UserName").getValue(String.class);
-//                                    Intent intent = new Intent(Login.this, CategorySelection.class);
-//                                    intent.putExtra("UserName", UserName);
-//                                    startActivity(intent);
-//                                }
-//
-//                                @Override
-//                                public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                    throw databaseError.toException();
-//                                }
-//                            });
-//                }
-//            }
-//        };
     }
 
     @Override
@@ -100,8 +74,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                                     .addListenerForSingleValueEvent(new ValueEventListener() {
                                                         @Override
                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                            String UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
-                                                            Log.d(TAG, "onDataChange: UserName: " + UserName);
+                                                            UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
                                                             Intent intent = new Intent(Login.this, CategorySelection.class);
                                                             intent.putExtra("UserName", UserName);
                                                             startActivity(intent);
@@ -154,5 +127,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onBackPressed();
         finishAffinity();
         System.exit(0);
+    }
+
+    @Override
+    protected void onStart() {
+        if (mAuth.getCurrentUser() != null && getIntent().getExtras() != null) {
+            UserName = getIntent().getExtras().getString("UserName");
+            Intent intent = new Intent(Login.this, CategorySelection.class);
+            intent.putExtra("UserName", UserName);
+            startActivity(intent);
+        }
+
+        super.onStart();
     }
 }
