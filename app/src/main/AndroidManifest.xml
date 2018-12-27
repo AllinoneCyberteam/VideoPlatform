@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="cyberteam.videoplatform">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -32,13 +31,15 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".login.UserProfile"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/CategorySelectionTheme" />
         <activity
             android:name=".login.ForgotPassword"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".CategorySelection"
             android:theme="@style/CategorySelectionTheme" />
+        <activity
+            android:name=".VideoActivity"
+            android:theme="@style/AppTheme" />
     </application>
-
 </manifest>

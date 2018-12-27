@@ -20,4 +20,6 @@
     <string name="current_password">Current Password</string>
     <string name="username_not_available">UserName not available</string>
     <string name="username_available">UserName Available</string>
+    <string name="enter_your_registered_email">Enter your registered email</string>
+    <string name="chanege_password">Chanege Password</string>
 </resources>
