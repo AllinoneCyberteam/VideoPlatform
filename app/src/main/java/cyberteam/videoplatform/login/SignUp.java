@@ -100,7 +100,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SignUp.this, "Something went wrong, tyr after some time", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "Something went wrong, try after some time", Toast.LENGTH_SHORT).show();
                             }
                         });
                     else

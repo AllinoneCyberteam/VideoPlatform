@@ -33,16 +33,16 @@
                     android:layout_width="179dp"
                     android:layout_height="144dp"
                     android:onClick="onClick"
-                    app:srcCompat="@drawable/ent" />
+                    app:srcCompat="@drawable/adev" />
 
                 <TextView
                     android:id="@+id/entt_id"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:text="ENTERTAINMENT"
+                    android:text="Android Development"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -57,14 +57,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="135dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/info" />
+                    app:srcCompat="@drawable/wdev" />
 
                 <TextView
                     android:id="@+id/infot_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="INFORMATIVE"
+                    android:text="Web Development"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
@@ -89,13 +89,13 @@
                     android:layout_width="183dp"
                     android:layout_height="156dp"
                     android:onClick="onClick"
-                    app:srcCompat="@drawable/news" />
+                    app:srcCompat="@drawable/ml" />
 
                 <TextView
                     android:id="@+id/newst_id"
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
-                    android:text="NEWs"
+                    android:text="Machine Learning"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
@@ -112,13 +112,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="156dp"
                     android:onClick="onClick"
-                    app:srcCompat="@drawable/tech" />
+                    app:srcCompat="@drawable/market" />
 
                 <TextView
                     android:id="@+id/techt_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TECHNICAL"
+                    android:text="Marketing"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"

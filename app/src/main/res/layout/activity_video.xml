@@ -38,7 +38,8 @@ tools:context=".VideoActivity">
             android:id="@+id/recyclerView3"
             android:layout_width="match_parent"
             android:layout_height="520dp"
-            android:layout_marginHorizontal="10dp"></android.support.v7.widget.RecyclerView>
+            android:layout_marginHorizontal="10dp">
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 </LinearLayout>
