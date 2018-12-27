@@ -32,13 +32,15 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".login.UserProfile"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/CategorySelectionTheme" />
         <activity
             android:name=".login.ForgotPassword"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".CategorySelection"
             android:theme="@style/CategorySelectionTheme" />
+        <activity
+            android:name=".VideoActivity"
+            android:theme="@style/AppTheme" />
     </application>
-
 </manifest>
