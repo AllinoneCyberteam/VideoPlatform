@@ -22,4 +22,8 @@
     <string name="username_available">UserName Available</string>
     <string name="enter_your_registered_email">Enter your registered email</string>
     <string name="chanege_password">Chanege Password</string>
+    <string name="marketing">Marketing</string>
+    <string name="machine_learning">Machine Learning</string>
+    <string name="web_development">Web Development</string>
+    <string name="android_development">Android Development</string>
 </resources>

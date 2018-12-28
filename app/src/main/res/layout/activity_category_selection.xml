@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,33 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="191dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="DisableBaselineAlignment">
 
             <LinearLayout
                 android:layout_width="404dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
-                    android:id="@+id/ent_id"
+                    android:id="@+id/android"
                     android:layout_width="179dp"
                     android:layout_height="144dp"
                     android:onClick="onClick"
-                    app:srcCompat="@drawable/adev" />
+                    app:srcCompat="@drawable/adev"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/entt_id"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:text="Android Development"
+                    android:text="@string/android_development"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="21sp"
@@ -53,18 +56,19 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/info_id"
+                    android:id="@+id/web"
                     android:layout_width="match_parent"
                     android:layout_height="135dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/wdev" />
+                    app:srcCompat="@drawable/wdev"
+                    tools:ignore="ContentDescription,NestedWeights" />
 
                 <TextView
                     android:id="@+id/infot_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Web Development"
+                    android:text="@string/web_development"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
@@ -82,20 +86,22 @@
             <LinearLayout
                 android:layout_width="195dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
-                    android:id="@+id/news_id"
+                    android:id="@+id/ml"
                     android:layout_width="183dp"
                     android:layout_height="156dp"
                     android:onClick="onClick"
-                    app:srcCompat="@drawable/ml" />
+                    android:src="@drawable/ml"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/newst_id"
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
-                    android:text="Machine Learning"
+                    android:text="@string/machine_learning"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
@@ -105,20 +111,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
-                    android:id="@+id/tech_id"
+                    android:id="@+id/marketing"
                     android:layout_width="match_parent"
                     android:layout_height="156dp"
                     android:onClick="onClick"
-                    app:srcCompat="@drawable/market" />
+                    android:src="@drawable/market"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/techt_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Marketing"
+                    android:text="@string/marketing"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
@@ -127,6 +135,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 </RelativeLayout>

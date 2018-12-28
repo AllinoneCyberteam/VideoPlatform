@@ -14,10 +14,10 @@ import cyberteam.videoplatform.login.UserProfile;
 
 public class CategorySelection extends AppCompatActivity implements View.OnClickListener {
     FirebaseAuth mAuth;
-    private ImageView i1;
-    private ImageView i2;
-    private ImageView i3;
-    private ImageView i4;
+    private ImageView android;
+    private ImageView web;
+    private ImageView ml;
+    private ImageView marketing;
     private String UserName;
 
     @Override
@@ -25,32 +25,37 @@ public class CategorySelection extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_selection);
 
-        i1 = (ImageView) findViewById(R.id.ent_id);
-        i2 = (ImageView) findViewById(R.id.info_id);
-        i3 = (ImageView) findViewById(R.id.news_id);
-        i4 = (ImageView) findViewById(R.id.tech_id);
+        android = (ImageView) findViewById(R.id.android);
+        web = (ImageView) findViewById(R.id.web);
+        ml = (ImageView) findViewById(R.id.ml);
+        marketing = (ImageView) findViewById(R.id.marketing);
         mAuth = FirebaseAuth.getInstance();
 
         if (getIntent().getExtras() != null)
             UserName = getIntent().getExtras().getString("UserName");
-        i1.setOnClickListener(this);
-        i2.setOnClickListener(this);
-        i3.setOnClickListener(this);
-        i4.setOnClickListener(this);
+        android.setOnClickListener(this);
+        web.setOnClickListener(this);
+        ml.setOnClickListener(this);
+        marketing.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-
-        if (v == i1) {
-            startActivity(new Intent(CategorySelection.this, VideoActivity.class));
-        } else if (v == i3) {
-            startActivity(new Intent(CategorySelection.this, VideoActivity.class));
-        } else if (v == i2) {
-            startActivity(new Intent(CategorySelection.this, VideoActivity.class));
-        } else if (v == i4) {
-            startActivity(new Intent(CategorySelection.this, VideoActivity.class));
+        Intent intent = new Intent(CategorySelection.this, VideoActivity.class);
+        if (v == android) {
+            intent.putExtra(CONSTANTS.LINK_KEY, CONSTANTS.ANDROID_LINKS);
+            intent.putExtra(CONSTANTS.TEXT_KEY, CONSTANTS.ANDROID_TEXT);
+        } else if (v == ml) {
+            intent.putExtra(CONSTANTS.LINK_KEY, CONSTANTS.Machine_Learning_LINKS);
+            intent.putExtra(CONSTANTS.TEXT_KEY, CONSTANTS.Machine_Learning_TEXT);
+        } else if (v == web) {
+            intent.putExtra(CONSTANTS.LINK_KEY, CONSTANTS.Web_Development_LINKS);
+            intent.putExtra(CONSTANTS.TEXT_KEY, CONSTANTS.Web_Development_TEXT);
+        } else if (v == marketing) {
+            intent.putExtra(CONSTANTS.LINK_KEY, CONSTANTS.Marketing_LINKS);
+            intent.putExtra(CONSTANTS.TEXT_KEY, CONSTANTS.Marketing_TEXT);
         }
+        startActivity(intent);
     }
 
     @Override
