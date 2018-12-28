@@ -1,20 +1,20 @@
 package cyberteam.videoplatform;
 
 public class YouTubeVideos {
-    String videoUrl;
+    private String videoUrl;
 
-    public YouTubeVideos() {
+    YouTubeVideos() {
     }
 
     public YouTubeVideos(String videoUrl) {
         this.videoUrl = videoUrl;
     }
 
-    public String getVideoUrl() {
+    String getVideoUrl() {
         return videoUrl;
     }
 
-    public void setVideoUrl(String videoUrl) {
+    void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
     }
 }

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,15 +14,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class VideoActivity extends AppCompatActivity {
+    private static final String TAG = "VideoActivity";
     RecyclerView recyclerView;
     TextView CategoryText;
     String Link;
     String DatabaseLink = "https://videoaplication-application.firebaseio.com";
-    Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
-    
+    ArrayList<YouTubeVideos> mYouTubeVideosArrayList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +35,9 @@ public class VideoActivity extends AppCompatActivity {
             CategoryText.setText(getIntent().getExtras().getString(CONSTANTS.TEXT_KEY));
         }
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView3);
+        recyclerView = findViewById(R.id.recyclerView3);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         FirebaseDatabase.getInstance(DatabaseLink).getReference("VideoLinks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -45,7 +46,13 @@ public class VideoActivity extends AppCompatActivity {
                 long LinkLimit = ds.getChildrenCount();
                 for (long i = 1; i <= LinkLimit; i++) {
                     String link = "Link" + Long.toString(i);
-                    youtubeVideos.add(new YouTubeVideos(CONSTANTS.LINK_PART1 + ds.child(link).getValue(String.class) + CONSTANTS.LINK_PART2));
+                    String VideoLink = CONSTANTS.LINK_PART1 + ds.child(link).getValue(String.class) + CONSTANTS.LINK_PART2;
+                    YouTubeVideos youTube = new YouTubeVideos();
+                    youTube.setVideoUrl(VideoLink);
+                    mYouTubeVideosArrayList.add(youTube);
+
+
+                    Log.d(TAG, Link + " : " + CONSTANTS.LINK_PART1 + ds.child(link).getValue(String.class) + CONSTANTS.LINK_PART2);
                 }
             }
 
@@ -56,7 +63,7 @@ public class VideoActivity extends AppCompatActivity {
             }
         });
 
-        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);
+        VideoAdapter videoAdapter = new VideoAdapter(mYouTubeVideosArrayList);
         recyclerView.setAdapter(videoAdapter);
     }
 }

@@ -25,10 +25,10 @@ public class CategorySelection extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_selection);
 
-        android = (ImageView) findViewById(R.id.android);
-        web = (ImageView) findViewById(R.id.web);
-        ml = (ImageView) findViewById(R.id.ml);
-        marketing = (ImageView) findViewById(R.id.marketing);
+        android = findViewById(R.id.android);
+        web = findViewById(R.id.web);
+        ml = findViewById(R.id.ml);
+        marketing = findViewById(R.id.marketing);
         mAuth = FirebaseAuth.getInstance();
 
         if (getIntent().getExtras() != null)
