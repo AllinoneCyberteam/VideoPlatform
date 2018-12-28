@@ -21,7 +21,7 @@ public class VideoActivity extends AppCompatActivity {
     String Link;
     String DatabaseLink = "https://videoaplication-application.firebaseio.com";
     Vector<YouTubeVideos> youtubeVideos = new Vector<YouTubeVideos>();
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
