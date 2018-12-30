@@ -10,7 +10,6 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import cyberteam.videoplatform.CategorySelection;
 import cyberteam.videoplatform.R;
 
-public class  Login extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {
     Button Login;
     Button forgotPassword;
     EditText userId;
@@ -39,10 +38,10 @@ public class  Login extends AppCompatActivity implements View.OnClickListener {
     String Password;
     String DatabaseLink = "https://videoaplication-application.firebaseio.com";
     FirebaseAuth mAuth;
-    LinearLayout mLinearLayout;
+    ConstraintLayout mConstraintLayout;
     Snackbar snackbar;
     TextView passShow;
-    boolean setType= true;
+    boolean setType = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,22 +49,19 @@ public class  Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
         initialize();
 
-        passShow= findViewById(R.id.textView9);
-
         passShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(setType==true) {
-                    setType=false;
+                if (setType) {
+                    setType = false;
                     userPassword.setTransformationMethod(null);
-                    if(userPassword.getText().length()>0)
+                    if (userPassword.getText().length() > 0)
                         userPassword.setSelection(userPassword.getText().length());
                     passShow.setBackgroundResource(R.drawable.hide_icon);
-                }
-                else {
-                    setType=true;
+                } else {
+                    setType = true;
                     userPassword.setTransformationMethod(new PasswordTransformationMethod());
-                    if(userPassword.getText().length()>0)
+                    if (userPassword.getText().length() > 0)
                         userPassword.setSelection(userPassword.getText().length());
                     passShow.setBackgroundResource(R.drawable.show_icon);
                 }
@@ -100,6 +96,8 @@ public class  Login extends AppCompatActivity implements View.OnClickListener {
                                                     .addListenerForSingleValueEvent(new ValueEventListener() {
                                                         @Override
                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                            userId.setText("");
+                                                            userPassword.setText("");
                                                             UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
                                                             Intent intent = new Intent(Login.this, CategorySelection.class);
                                                             intent.putExtra("UserName", UserName);
@@ -117,7 +115,7 @@ public class  Login extends AppCompatActivity implements View.OnClickListener {
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Snackbar snackbar = Snackbar.make(mLinearLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
+                            Snackbar snackbar = Snackbar.make(mConstraintLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         }
                     });
@@ -145,7 +143,8 @@ public class  Login extends AppCompatActivity implements View.OnClickListener {
         userPassword = findViewById(R.id.password);
         newUser = findViewById(R.id.newuser);
         mAuth = FirebaseAuth.getInstance();
-        mLinearLayout = findViewById(R.id.linearLayout);
+        passShow = findViewById(R.id.textView9);
+        mConstraintLayout = findViewById(R.id.ConstraintLayout);
     }
 
     @Override
