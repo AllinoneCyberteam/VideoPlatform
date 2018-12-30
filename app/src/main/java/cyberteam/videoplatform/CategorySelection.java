@@ -91,7 +91,8 @@ public class CategorySelection extends AppCompatActivity implements View.OnClick
             }
             case R.id.Log_out: {
                 mAuth.signOut();
-                finish();
+                finishAffinity();
+                System.exit(0);
                 break;
             }
         }
