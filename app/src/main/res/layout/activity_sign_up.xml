@@ -60,7 +60,7 @@
             tools:layout_editor_absoluteY="46dp" />
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -76,17 +76,23 @@
             android:id="@+id/newPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:ems="10"
             android:hint="@string/new_password"
             android:inputType="textPassword"
             android:textColor="#000000"
             android:textColorHint="#000000"
-            tools:ignore="AutoFill"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="137dp" />
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="AutoFill" />
+    </android.support.constraint.ConstraintLayout>
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -102,15 +108,21 @@
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:ems="10"
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:textColor="#000000"
             android:textColorHint="#000000"
-            tools:ignore="AutoFill"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="229dp" />
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="AutoFill" />
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/SignUp"
@@ -164,5 +176,27 @@
         app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
         app:layout_constraintStart_toStartOf="@+id/linearLayout6"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+    <TextView
+        android:id="@+id/showPassword1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/show_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout3" />
+
+    <TextView
+        android:id="@+id/showPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/show_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
 
 </android.support.constraint.ConstraintLayout>
