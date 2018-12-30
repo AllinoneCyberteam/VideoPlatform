@@ -41,5 +41,9 @@
         <activity
             android:name=".VideoActivity"
             android:theme="@style/AppTheme" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 </manifest>
