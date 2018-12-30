@@ -6,9 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import cyberteam.videoplatform.CategorySelection;
 import cyberteam.videoplatform.R;
 
-public class Login extends AppCompatActivity implements View.OnClickListener {
+public class  Login extends AppCompatActivity implements View.OnClickListener {
     Button Login;
     Button forgotPassword;
     EditText userId;
@@ -37,14 +39,38 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     String Password;
     String DatabaseLink = "https://videoaplication-application.firebaseio.com";
     FirebaseAuth mAuth;
-    ConstraintLayout mConstraintLayout;
+    LinearLayout mLinearLayout;
     Snackbar snackbar;
+    TextView passShow;
+    boolean setType= true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initialize();
+
+        passShow= findViewById(R.id.textView9);
+
+        passShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(setType==true) {
+                    setType=false;
+                    userPassword.setTransformationMethod(null);
+                    if(userPassword.getText().length()>0)
+                        userPassword.setSelection(userPassword.getText().length());
+                    passShow.setBackgroundResource(R.drawable.hide_icon);
+                }
+                else {
+                    setType=true;
+                    userPassword.setTransformationMethod(new PasswordTransformationMethod());
+                    if(userPassword.getText().length()>0)
+                        userPassword.setSelection(userPassword.getText().length());
+                    passShow.setBackgroundResource(R.drawable.show_icon);
+                }
+            }
+        });
 
         Login.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
@@ -91,7 +117,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Snackbar snackbar = Snackbar.make(mConstraintLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
+                            Snackbar snackbar = Snackbar.make(mLinearLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         }
                     });
@@ -119,7 +145,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         userPassword = findViewById(R.id.password);
         newUser = findViewById(R.id.newuser);
         mAuth = FirebaseAuth.getInstance();
-        mConstraintLayout = findViewById(R.id.constraintLayout);
+        mLinearLayout = findViewById(R.id.linearLayout);
     }
 
     @Override
