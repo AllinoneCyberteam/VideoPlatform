@@ -35,7 +35,7 @@ public class SplashScreen extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             String UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
-                            Intent intent = new Intent(SplashScreen.this, CategorySelection.class);
+                            Intent intent = new Intent(SplashScreen.this, Login.class);
                             intent.putExtra("UserName", UserName);
                             startActivity(intent);
                         }
