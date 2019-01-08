@@ -12,12 +12,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import cyberteam.videoplatform.login.Login;
-
 public class SplashScreen extends AppCompatActivity {
     int splashTime = 3000;
     Handler mHandler = new Handler();
-    String DatabaseLink = "https://videoaplication-application.firebaseio.com";
     FirebaseAuth mAuth;
     String uid;
 
@@ -29,13 +26,13 @@ public class SplashScreen extends AppCompatActivity {
 
         if (mAuth.getCurrentUser() != null) {
             uid = mAuth.getCurrentUser().getUid();
-            FirebaseDatabase.getInstance(DatabaseLink)
+            FirebaseDatabase.getInstance(CONSTANTS.DatabaseLink)
                     .getReference("users")
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             String UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
-                            Intent intent = new Intent(SplashScreen.this, Login.class);
+                            Intent intent = new Intent(SplashScreen.this, DashBoard.class);
                             intent.putExtra("UserName", UserName);
                             startActivity(intent);
                         }
@@ -49,7 +46,7 @@ public class SplashScreen extends AppCompatActivity {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(SplashScreen.this, Login.class));
+                    startActivity(new Intent(SplashScreen.this, DashBoard.class));
                 }
             }, splashTime);
         }

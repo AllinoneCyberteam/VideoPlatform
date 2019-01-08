@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    tools:context=".CategorySelection">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".DashBoard"
+    tools:showIn="@layout/app_bar_dash_board">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +16,10 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:orientation="vertical"
-        tools:ignore="UselessParent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,14 +38,13 @@
                     android:id="@+id/android"
                     android:layout_width="179dp"
                     android:layout_height="144dp"
-                    android:onClick="onClick"
                     app:srcCompat="@drawable/android"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/entt_id"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/android_development"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
@@ -93,14 +96,14 @@
                     android:id="@+id/ml"
                     android:layout_width="183dp"
                     android:layout_height="156dp"
-                    android:onClick="onClick"
                     android:src="@drawable/machine"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/newst_id"
                     android:layout_width="match_parent"
-                    android:layout_height="42dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
                     android:text="@string/machine_learning"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
@@ -118,7 +121,6 @@
                     android:id="@+id/marketing"
                     android:layout_width="match_parent"
                     android:layout_height="156dp"
-                    android:onClick="onClick"
                     android:src="@drawable/marketing"
                     tools:ignore="ContentDescription" />
 
@@ -135,4 +137,5 @@
         </LinearLayout>
 
     </LinearLayout>
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

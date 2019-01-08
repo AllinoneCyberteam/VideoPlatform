@@ -21,9 +21,14 @@
     <string name="username_not_available">UserName not available</string>
     <string name="username_available">UserName Available</string>
     <string name="enter_your_registered_email">Enter your registered email</string>
-    <string name="chanege_password">Chanege Password</string>
     <string name="marketing">Marketing</string>
     <string name="machine_learning">Machine Learning</string>
     <string name="web_development">Web Development</string>
     <string name="android_development">Android Development</string>
+    <string name="title_activity_dash_board">Video Platform</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="log_in">LOG IN</string>
 </resources>

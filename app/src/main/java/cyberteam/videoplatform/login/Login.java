@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import cyberteam.videoplatform.CategorySelection;
+import cyberteam.videoplatform.DashBoard;
 import cyberteam.videoplatform.R;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
@@ -91,24 +91,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     else {
                                         if (mAuth.getCurrentUser() != null) {
                                             uid = mAuth.getCurrentUser().getUid();
-                                            FirebaseDatabase.getInstance(DatabaseLink)
-                                                    .getReference("users")
-                                                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                                                        @Override
-                                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                            userId.setText("");
-                                                            userPassword.setText("");
-                                                            UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
-                                                            Intent intent = new Intent(Login.this, CategorySelection.class);
-                                                            intent.putExtra("UserName", UserName);
-                                                            startActivity(intent);
-                                                        }
+                                            FirebaseDatabase.getInstance(DatabaseLink).getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
+                                                    Intent intent = new Intent(Login.this, DashBoard.class);
+                                                    intent.putExtra("UserName", UserName);
+                                                    startActivity(intent);
+                                                }
 
-                                                        @Override
-                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                            throw databaseError.toException();
-                                                        }
-                                                    });
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                    throw databaseError.toException();
+                                                }
+                                            });
                                         }
                                     }
                                 }
@@ -145,24 +141,5 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         passShow = findViewById(R.id.textView9);
         mConstraintLayout = findViewById(R.id.ConstraintLayout);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finishAffinity();
-        System.exit(0);
-    }
-
-    @Override
-    protected void onStart() {
-        if (mAuth.getCurrentUser() != null && getIntent().getExtras() != null) {
-            UserName = getIntent().getExtras().getString("UserName");
-            Intent intent = new Intent(Login.this, CategorySelection.class);
-            intent.putExtra("UserName", UserName);
-            startActivity(intent);
-        }
-
-        super.onStart();
     }
 }

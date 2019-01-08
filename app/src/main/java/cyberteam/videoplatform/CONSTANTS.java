@@ -18,4 +18,6 @@ class CONSTANTS {
 
     static final String LINK_PART1 = "<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/";
     static final String LINK_PART2 = "\" frameborder=\"0\" allowfullscreen></iframe>";
+
+    static final String DatabaseLink = "https://videoaplication-application.firebaseio.com";
 }

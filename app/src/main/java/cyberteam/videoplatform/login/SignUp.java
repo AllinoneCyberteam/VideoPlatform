@@ -164,7 +164,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     void initialize() {
-        UserName = findViewById(R.id.UserName);
+        UserName = findViewById(R.id.DashUserName);
         EmailId = findViewById(R.id.emailId);
         newPassword = findViewById(R.id.newPassword);
         confirmPassword = findViewById(R.id.confirmPassword);

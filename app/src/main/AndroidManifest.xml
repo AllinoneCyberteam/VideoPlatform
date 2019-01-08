@@ -36,14 +36,17 @@
             android:name=".login.ForgotPassword"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".CategorySelection"
-            android:theme="@style/CategorySelectionTheme" />
-        <activity
             android:name=".VideoActivity"
             android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".DashBoard"
+            android:label="@string/title_activity_dash_board"
+            android:theme="@style/AppTheme" />
     </application>
+
 </manifest>

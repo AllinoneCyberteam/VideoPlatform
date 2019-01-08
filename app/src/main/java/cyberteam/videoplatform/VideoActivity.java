@@ -21,7 +21,6 @@ public class VideoActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView CategoryText;
     String Link;
-    String DatabaseLink = "https://videoaplication-application.firebaseio.com";
     ArrayList<YouTubeVideos> mYouTubeVideosArrayList = new ArrayList<>();
 
     @Override
@@ -39,7 +38,7 @@ public class VideoActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseDatabase.getInstance(DatabaseLink).getReference("VideoLinks").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance(CONSTANTS.DatabaseLink).getReference("VideoLinks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 DataSnapshot ds = dataSnapshot.child(Link);
