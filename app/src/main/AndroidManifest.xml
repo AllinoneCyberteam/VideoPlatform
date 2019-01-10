@@ -47,6 +47,9 @@
             android:name=".DashBoard"
             android:label="@string/title_activity_dash_board"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".UploadProfilePhoto"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

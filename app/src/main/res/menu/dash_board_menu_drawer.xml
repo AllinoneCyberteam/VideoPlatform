@@ -10,6 +10,11 @@
 
     <item
         android:id="@+id/sign_out"
-        android:orderInCategory="0"
+        android:orderInCategory="3"
         android:title="@string/log_in" />
+
+    <item
+        android:id="@+id/UploadProfilePicture"
+        android:orderInCategory="2"
+        android:title="@string/upload_profile_picture" />
 </menu>

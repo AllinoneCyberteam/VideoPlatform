@@ -31,4 +31,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="log_in">LOG IN</string>
+    <string name="upload_profile_picture">Change Profile Picture</string>
+    <string name="upload_profile_pic1">Upload Profile pic</string>
+    <string name="profile_pic_upload_description">Profile Pic Upload</string>
+    <string name="select_photo">Select Photo</string>
+    <string name="upload">Upload</string>
+    <string name="selectimage">Select Image</string>
 </resources>

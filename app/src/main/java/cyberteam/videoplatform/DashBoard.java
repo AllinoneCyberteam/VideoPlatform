@@ -1,6 +1,7 @@
 package cyberteam.videoplatform;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,7 +18,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import cyberteam.videoplatform.login.Login;
 import cyberteam.videoplatform.login.UserProfile;
@@ -32,6 +38,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private ImageView marketing;
     private String UserName;
     private TextView username;
+    private ImageView ProfilePhoto;
+    private StorageReference mStorageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_dash_board);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mStorageReference = FirebaseStorage.getInstance().getReference("ProfilePhotos");
 
         android = findViewById(R.id.android);
         web = findViewById(R.id.web);
@@ -68,6 +78,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             user.setTitle(R.string.log_in);
         } else {
             username = view.findViewById(R.id.DashUserName);
+            ProfilePhoto = view.findViewById(R.id.DashProfilePhoto);
             username.setText(UserName);
             user.setTitle(R.string.log_out);
         }
@@ -94,6 +105,21 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(intent);
         } else
             Toast.makeText(DashBoard.this, "You need to Login first", Toast.LENGTH_SHORT).show();
+    }
+
+    void getProfilePhotoUrl() {
+        if (mAuth.getCurrentUser() != null)
+            mStorageReference.child(mAuth.getCurrentUser().getUid() + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).fit().centerCrop().into(ProfilePhoto);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    ProfilePhoto.setImageBitmap(null);
+                }
+            });
     }
 
     @Override
@@ -140,7 +166,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                     Toast.makeText(DashBoard.this, "You need to Login first", Toast.LENGTH_SHORT).show();
                 break;
             }
-
             case R.id.sign_out: {
                 Intent intent;
                 if (mAuth.getCurrentUser() != null) {
@@ -154,6 +179,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 }
                 break;
             }
+            case R.id.UploadProfilePicture:
+                startActivity(new Intent(DashBoard.this, UploadProfilePhoto.class));
+                break;
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -167,5 +195,12 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         Menu menu = navigationView.getMenu();
         MenuItem user = menu.findItem(R.id.sign_out);
         user.setTitle(R.string.log_in);
+        ProfilePhoto.setImageBitmap(null);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getProfilePhotoUrl();
     }
 }
