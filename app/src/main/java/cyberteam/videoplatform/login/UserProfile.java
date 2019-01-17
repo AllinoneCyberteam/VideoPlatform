@@ -80,7 +80,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
                 mAuth.signInWithEmailAndPassword(EmailID, CurPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful() && NewPassword.equals(CfnPassword))
+                        if (task.isSuccessful() && NewPassword.equals(CfnPassword) && mAuth.getCurrentUser() != null)
                             mAuth.getCurrentUser().updatePassword(CfnPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

@@ -3,21 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/side_nav_bar"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:paddingLeft="24dp"
+    android:paddingTop="24dp"
+    android:paddingRight="24dp"
+    android:paddingBottom="12dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     tools:layout_editor_absoluteY="81dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/DashProfilePhoto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:src="@drawable/default_profile_pic"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/DashUserName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
@@ -29,11 +32,24 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/DashProfilePhoto"
-        app:layout_constraintEnd_toEndOf="@+id/DashProfilePhoto"
-        app:layout_constraintStart_toStartOf="@+id/DashProfilePhoto"
+        app:layout_constraintBottom_toTopOf="@+id/DashAccountType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/DashProfilePhoto"
         app:layout_constraintTop_toTopOf="@+id/DashProfilePhoto"
-        app:layout_constraintVertical_bias="1.0"
         tools:text="UserName" />
+
+    <TextView
+        android:id="@+id/DashAccountType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/DashProfilePhoto"
+        app:layout_constraintEnd_toEndOf="@+id/DashUserName"
+        app:layout_constraintStart_toStartOf="@+id/DashUserName"
+        app:layout_constraintTop_toBottomOf="@+id/DashUserName"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Account Type" />
 
 </android.support.constraint.ConstraintLayout>

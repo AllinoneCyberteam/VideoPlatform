@@ -108,6 +108,7 @@ public class UploadProfilePhoto extends AppCompatActivity implements View.OnClic
                         }
                     }, 3000);
                     Toast.makeText(UploadProfilePhoto.this, "Profile Photo Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -121,7 +122,6 @@ public class UploadProfilePhoto extends AppCompatActivity implements View.OnClic
                 }
             });
         } else if (mAuth.getCurrentUser() != null && profilePhotoAdded()) {
-//            DeleteAndUpload();
             if (mAuth.getCurrentUser() != null)
                 mStorageReference.child(mAuth.getCurrentUser().getUid() + ".jpg").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

@@ -99,7 +99,7 @@
         android:background="@drawable/login_edit_text_background"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/SignUp"
+        app:layout_constraintBottom_toTopOf="@+id/rg"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -124,6 +124,33 @@
             tools:ignore="AutoFill" />
     </android.support.constraint.ConstraintLayout>
 
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/SignUp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <RadioButton
+            android:id="@+id/studentAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/student_account"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/instructorAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/instructor_account"
+            android:textSize="14sp" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/SignUp"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -136,7 +163,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/rg" />
 
     <TextView
         android:id="@+id/textView2"

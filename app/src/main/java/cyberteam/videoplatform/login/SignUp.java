@@ -7,6 +7,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,24 +30,29 @@ import java.util.Map;
 import cyberteam.videoplatform.R;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
-    EditText UserName;
-    EditText EmailId;
-    EditText newPassword;
-    EditText confirmPassword;
-    Button SignUp;
-    TextView goBack;
-    TextView UserNameE;
-    TextView showPassword1;
-    TextView showPassword2;
-    boolean setType1 = true;
-    boolean setType2 = true;
-    FirebaseAuth mAuth;
-    FirebaseUser user;
-    DatabaseReference mDatabaseReference;
-    FirebaseAuth.AuthStateListener mAuthListener;
-    String DatabaseLink = "https://videoaplication-application.firebaseio.com";
-    Map<String, String> mMap = new HashMap<>();
-    ArrayList<String> UserArrayList = new ArrayList<>();
+    private static final String ACCOUNT_TYPE = "Account Type";
+    private static final String INSTRUCTOR_ACCOUNT = "Instructor Account";
+    private static final String STUDENT_ACCOUNT = "Student Account";
+    private EditText UserName;
+    private EditText EmailId;
+    private EditText newPassword;
+    private EditText confirmPassword;
+    private Button SignUp;
+    private RadioButton StudentAaccRadioButton;
+    private RadioButton InstructorAaccRadioButton;
+    private TextView goBack;
+    private TextView UserNameE;
+    private TextView showPassword1;
+    private TextView showPassword2;
+    private boolean setType1 = true;
+    private boolean setType2 = true;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private DatabaseReference mDatabaseReference;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private String DatabaseLink = "https://videoaplication-application.firebaseio.com";
+    private Map<String, String> UserNameMap = new HashMap<>();
+    private ArrayList<String> UserArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +64,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = mAuth.getCurrentUser();
-                mMap.put("UserName", UserName.getText().toString());
+                if (InstructorAaccRadioButton.isChecked())
+                    UserNameMap.put(ACCOUNT_TYPE, INSTRUCTOR_ACCOUNT);
+                else if (StudentAaccRadioButton.isChecked())
+                    UserNameMap.put(ACCOUNT_TYPE, STUDENT_ACCOUNT);
+                UserNameMap.put("UserName", UserName.getText().toString());
                 if (user != null) {
-                    mDatabaseReference.child("users").child(user.getUid()).setValue(mMap);
+                    mDatabaseReference.child("users").child(user.getUid()).setValue(UserNameMap);
                 }
             }
         };
@@ -78,7 +88,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             case R.id.SignUp: {
                 int arraySize;
                 boolean avail;
-                if (!UserName.getText().toString().equals("")) {
+                if (!UserName.getText().toString().equals("") && (StudentAaccRadioButton.isChecked() || InstructorAaccRadioButton.isChecked())) {
                     arraySize = UserArrayList.size();
                     avail = true;
                     for (int i = 0; i < arraySize; i++) {
@@ -121,7 +131,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         else if (confirmPassword.getText().toString().equals(""))
                             Toast.makeText(SignUp.this, "Confirm Password Field is empty", Toast.LENGTH_SHORT).show();
                     }
-                } else Toast.makeText(SignUp.this, "Pick a Username", Toast.LENGTH_SHORT).show();
+                } else if (!UserName.getText().toString().equals("")) {
+                    Toast.makeText(SignUp.this, "Pick a Username", Toast.LENGTH_SHORT).show();
+                } else if (StudentAaccRadioButton.isChecked() || InstructorAaccRadioButton.isChecked()) {
+                    Toast.makeText(SignUp.this, "Select Account Type", Toast.LENGTH_SHORT).show();
+                }
             }
             break;
             case R.id.Login: {
@@ -169,6 +183,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         newPassword = findViewById(R.id.newPassword);
         confirmPassword = findViewById(R.id.confirmPassword);
         SignUp = findViewById(R.id.SignUp);
+        StudentAaccRadioButton = findViewById(R.id.studentAccount);
+        InstructorAaccRadioButton = findViewById(R.id.instructorAccount);
         goBack = findViewById(R.id.Login);
         mAuth = FirebaseAuth.getInstance();
         UserNameE = findViewById(R.id.userNameError);

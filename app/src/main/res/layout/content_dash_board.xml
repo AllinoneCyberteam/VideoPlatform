@@ -4,138 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DashBoard"
     tools:showIn="@layout/app_bar_dash_board">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:orientation="vertical"
+
+    <ListView
+        android:id="@+id/CourseList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="203dp"
-            android:orientation="horizontal"
-            tools:ignore="DisableBaselineAlignment">
-
-            <LinearLayout
-                android:layout_width="404dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:id="@+id/android"
-                    android:layout_width="179dp"
-                    android:layout_height="144dp"
-                    app:srcCompat="@drawable/android"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/entt_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/android_development"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/web"
-                    android:layout_width="match_parent"
-                    android:layout_height="135dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/webdev"
-                    tools:ignore="ContentDescription,NestedWeights" />
-
-                <TextView
-                    android:id="@+id/infot_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/web_development"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="209dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="195dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:id="@+id/ml"
-                    android:layout_width="183dp"
-                    android:layout_height="156dp"
-                    android:src="@drawable/machine"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/newst_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="false"
-                    android:text="@string/machine_learning"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:ignore="UseCompoundDrawables">
-
-                <ImageView
-                    android:id="@+id/marketing"
-                    android:layout_width="match_parent"
-                    android:layout_height="156dp"
-                    android:src="@drawable/marketing"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/techt_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/marketing"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

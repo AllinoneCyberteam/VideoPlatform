@@ -4,17 +4,39 @@
     tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/PasswordChange"
+        android:id="@+id/FindCourses"
+        android:orderInCategory="0"
+        android:title="@string/find_courses" />
+
+
+    <item
+        android:id="@+id/MyCourses"
         android:orderInCategory="1"
-        android:title="@string/change_password" />
+        android:title="@string/my_courses" />
 
     <item
-        android:id="@+id/sign_out"
-        android:orderInCategory="3"
-        android:title="@string/log_in" />
-
-    <item
-        android:id="@+id/UploadProfilePicture"
+        android:id="@+id/AddCourse"
         android:orderInCategory="2"
-        android:title="@string/upload_profile_picture" />
+        android:title="@string/add_new_course" />
+
+    <item
+        android:orderInCategory="5"
+        android:title="@string/profile_settings">
+        <menu>
+            <item
+                android:id="@+id/PasswordChange"
+                android:orderInCategory="1"
+                android:title="@string/change_password" />
+
+            <item
+                android:id="@+id/sign_out"
+                android:orderInCategory="3"
+                android:title="@string/log_in" />
+
+            <item
+                android:id="@+id/UploadProfilePicture"
+                android:orderInCategory="2"
+                android:title="@string/upload_profile_picture" />
+        </menu>
+    </item>
 </menu>
