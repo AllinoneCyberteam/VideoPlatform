@@ -43,7 +43,6 @@
     <string name="my_courses">My Courses</string>
     <string name="find_courses">Find Courses</string>
     <string name="add_new_course">Add New Course</string>
-    <string name="course_name">Course Name</string>
     <string name="button">Button</string>
     <string name="cancel">Cancel</string>
     <string name="set_icon">Set Icon</string>
@@ -62,4 +61,9 @@
     <string name="video">Video</string>
     <string name="description">Description:</string>
     <string name="author">Author: </string>
+    <string name="course_name">Course Name</string>
+    <string name="check">Check</string>
+    <string name="upload_course">Upload Course</string>
+    <string name="select_videos">Select Videos</string>
+    <string name="pick_icon">Pick Icon</string>
 </resources>

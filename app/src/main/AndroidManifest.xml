@@ -32,7 +32,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".login.UserProfile"
-            android:theme="@style/CategorySelectionTheme" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".login.ForgotPassword"
             android:theme="@style/AppTheme" />

@@ -1,219 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:layout_editor_absoluteX="148dp"
     tools:layout_editor_absoluteY="188dp">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+        android:id="@+id/constraintLayout7"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <TextView
-            android:id="@+id/HeaderView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/add_course_details"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/CourseName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/IMAGE_PICK_LAY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/CourseName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:hint="@string/course_name"
+            android:inputType="textPersonName"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/DescriptionNote"
-            app:layout_constraintEnd_toEndOf="@+id/HeaderView"
-            app:layout_constraintStart_toStartOf="@+id/HeaderView"
-            app:layout_constraintTop_toBottomOf="@+id/HeaderView"
-            tools:ignore="AutoFill,TextFields" />
-
-        <EditText
-            android:id="@+id/DescriptionNote"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_description"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout10"
-            app:layout_constraintEnd_toEndOf="@+id/CourseName"
-            app:layout_constraintStart_toStartOf="@+id/CourseName"
-            app:layout_constraintTop_toBottomOf="@+id/CourseName"
-            tools:ignore="AutoFill,TextFields" />
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/red_button_back"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
-            app:layout_constraintEnd_toEndOf="@+id/DescriptionNote"
-            app:layout_constraintStart_toStartOf="@+id/DescriptionNote"
-            app:layout_constraintTop_toBottomOf="@+id/DescriptionNote">
-
-            <Button
-                android:id="@+id/CheckCourseName"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/check_course_name"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/SelectIcon"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/SelectIcon"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/select_icon"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/CheckCourseName"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/UploadIcon"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayout10"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout10"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/SelectedImage"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/IconUploadStatus"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription"
-                tools:src="@drawable/bg" />
-
-            <ProgressBar
-                android:id="@+id/IconUploadWaitProgress"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/SelectedImage"
-                app:layout_constraintEnd_toEndOf="@+id/SelectedImage"
-                app:layout_constraintStart_toStartOf="@+id/SelectedImage"
-                app:layout_constraintTop_toTopOf="@+id/SelectedImage" />
-
-            <ImageView
-                android:id="@+id/IconUploadStatus"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_gravity="center"
-                android:background="@drawable/done"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/SelectedImage"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-        </android.support.constraint.ConstraintLayout>
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CheckCourseName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="Autofill"
+            tools:text="Course Name" />
 
         <Button
-            android:id="@+id/UploadIcon"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="0dp"
+            android:id="@+id/CheckCourseName"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/red_button_back"
-            android:text="@string/upload_course_icon"
+            android:text="@string/check"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/VideoList"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayout7"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout7"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
-
-        <TextView
-            android:id="@+id/VideoList"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/list_background"
-            android:singleLine="false"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
-            app:layout_constraintEnd_toEndOf="@+id/UploadIcon"
-            app:layout_constraintStart_toStartOf="@+id/UploadIcon"
-            app:layout_constraintTop_toBottomOf="@+id/UploadIcon" />
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/red_button_back"
-            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/VideoList"
-            app:layout_constraintStart_toStartOf="@+id/VideoList"
-            app:layout_constraintTop_toBottomOf="@+id/VideoList">
-
-            <Button
-                android:id="@+id/AddVideos"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/add_video"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/UploadVideos"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/UploadVideos"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/upload"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/AddVideos"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/UploadVideos"
-                app:layout_constraintEnd_toEndOf="@+id/UploadVideos"
-                app:layout_constraintStart_toStartOf="@+id/UploadVideos"
-                app:layout_constraintTop_toTopOf="@+id/UploadVideos" />
-        </android.support.constraint.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/CourseName"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
-</ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/IMAGE_PICK_LAY"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/VIDEO_PICK_LAY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+
+        <Button
+            android:id="@+id/PickIcon"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_icon"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/SelectedIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/SelectedIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/VIDEO_PICK_LAY"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IMAGE_PICK_LAY">
+
+        <Button
+            android:id="@+id/SelectVideo"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_videos"
+            app:layout_constraintBottom_toTopOf="@+id/VideoList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/VideoList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/UploadCourse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SelectVideo" />
+
+        <Button
+            android:id="@+id/UploadCourse"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_course"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/VideoList" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/UploadCourse" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
