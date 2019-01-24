@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,16 +29,25 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 import cyberteam.videoplatform.R;
 
 public class SelectCourseName extends AppCompatActivity implements View.OnClickListener {
     public static final String DatabaseLink = "https://videoaplication-application.firebaseio.com";
     private static final int PICK_REQUEST = 1;
+    private Map<String, String> map = new HashMap<>();
     private ArrayList<String> CourseNameList = new ArrayList<>();
     private ArrayList<VideoNameUri> videoList = new ArrayList<>();
+    private ArrayList<Map<String, String>> arrayList = new ArrayList<>();
     private Uri PhotoUri;
+    private String UserName;
+    private String IconLink;
 
     private Button uploadCourse;
     private EditText CourseName;
@@ -58,6 +68,9 @@ public class SelectCourseName extends AppCompatActivity implements View.OnClickL
         SelectedIcon = findViewById(R.id.SelectedIcon);
         VideoList = findViewById(R.id.VideoList);
         mProgressBar = findViewById(R.id.progressBar);
+
+        if (getIntent().getExtras() != null)
+            UserName = getIntent().getExtras().getString("UserName");
 
         checkCourseName.setOnClickListener(this);
         pickIcon.setOnClickListener(this);
@@ -190,11 +203,26 @@ public class SelectCourseName extends AppCompatActivity implements View.OnClickL
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Upload(videoList, 0);
+                getDownloadUrl(CourseName.getText().toString() + "Icon.jpg");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(SelectCourseName.this, "Task Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getDownloadUrl(String CourseName) {
+        FirebaseStorage.getInstance().getReference("CourseIcons").child(CourseName).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                IconLink = uri.toString();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                finish();
             }
         });
     }
@@ -222,7 +250,28 @@ public class SelectCourseName extends AppCompatActivity implements View.OnClickL
                     mProgressBar.setProgress((int) (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount()));
                 }
             });
+        } else {
+            Intent intent = new Intent();
+            intent.putExtra("CourseName", CourseName.getText().toString());
+            intent.putExtra("Map", arrayList.add(createHashMap(Index + 1)));
+            startActivity(intent);
         }
+    }
+
+    private Map<String, String> createHashMap(int count) {
+
+        Date today = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        String DateAdded = format.format(today);
+
+        map.put("Author", UserName);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null)
+            map.put("Author Id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        map.put("Date Added", DateAdded);
+        map.put("IconLink", IconLink);
+        map.put("Video Count", Integer.toString(count));
+
+        return map;
     }
 
     class VideoNameUri {

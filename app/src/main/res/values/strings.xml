@@ -40,7 +40,6 @@
     <string name="student_account">Student Account</string>
     <string name="instructor_account">Instructor Account</string>
     <string name="profile_settings">Profile Settings</string>
-    <string name="my_courses">My Courses</string>
     <string name="find_courses">Find Courses</string>
     <string name="add_new_course">Add New Course</string>
     <string name="button">Button</string>
@@ -66,4 +65,10 @@
     <string name="upload_course">Upload Course</string>
     <string name="select_videos">Select Videos</string>
     <string name="pick_icon">Pick Icon</string>
+    <string name="save_course">Save Course</string>
+    <string name="reset">Reset</string>
+    <string name="desc">Description</string>
+    <string name="course_content">Course Content</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="my_courses">My Courses</string>
 </resources>

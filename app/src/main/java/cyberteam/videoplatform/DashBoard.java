@@ -113,7 +113,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         CourseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(DashBoard.this, VideoActivity.class);
+                Intent intent = new Intent(DashBoard.this, CourseDetails.class);
                 DownloadData downloadData = mCourseData.get(position);
                 intent.putExtra("CourseName", downloadData.getCourseName());
                 startActivity(intent);
@@ -201,10 +201,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.MyCourses: {
+                startActivity(new Intent(DashBoard.this, MyCourses.class));
                 break;
             }
             case R.id.AddCourse: {
-                startActivity(new Intent(DashBoard.this, SelectCourseName.class));
+                Intent intent = new Intent(DashBoard.this, SelectCourseName.class);
+                intent.putExtra("UserName", UserName);
+                startActivity(intent);
                 break;
             }
         }
@@ -235,7 +238,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         getProfilePhotoUrl();
     }
 
-    void LoadCourseData() {
+    private void LoadCourseData() {
         FirebaseDatabase.getInstance().getReference("Courses").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -262,44 +265,5 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private void UpdateList() {
         CourseDataAdapter courseDataAdapter = new CourseDataAdapter(DashBoard.this, mCourseData);
         CourseList.setAdapter(courseDataAdapter);
-    }
-
-    class DownloadData {
-        Uri PhotoUri;
-        String DateAdded;
-        String CourseName;
-        String VideoCount;
-
-        Uri getPhotoUri() {
-            return PhotoUri;
-        }
-
-        void setPhotoUri(Uri photoUri) {
-            PhotoUri = photoUri;
-        }
-
-        String getDateAdded() {
-            return DateAdded;
-        }
-
-        void setDateAdded(String dateAdded) {
-            DateAdded = dateAdded;
-        }
-
-        String getCourseName() {
-            return CourseName;
-        }
-
-        void setCourseName(String courseName) {
-            CourseName = courseName;
-        }
-
-        String getVideoCount() {
-            return VideoCount;
-        }
-
-        void setVideoCount(String videoCount) {
-            VideoCount = videoCount;
-        }
     }
 }

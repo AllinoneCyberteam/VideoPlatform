@@ -17,10 +17,10 @@ import java.util.List;
 public class CourseDataAdapter extends ArrayAdapter {
     private final int layoutResource;
     private final LayoutInflater mLayoutInflater;
-    private List<DashBoard.DownloadData> Data;
+    private List<DownloadData> Data;
     private Uri PhotoUri;
 
-    CourseDataAdapter(Context context, List<DashBoard.DownloadData> data) {
+    CourseDataAdapter(Context context, List<DownloadData> data) {
         super(context, R.layout.dashbord_listhiew_hiewholder);
         this.layoutResource = R.layout.dashbord_listhiew_hiewholder;
         mLayoutInflater = LayoutInflater.from(context);
@@ -46,7 +46,7 @@ public class CourseDataAdapter extends ArrayAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        DashBoard.DownloadData currentData = Data.get(position);
+        DownloadData currentData = Data.get(position);
 
         String VideoCountText = "Video count: " + currentData.getVideoCount();
         viewHolder.CourseName.setText(currentData.getCourseName());
