@@ -47,7 +47,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private StorageReference mStorageReference;
     private String AccountType;
     private String UserName;
-    private ArrayList<DownloadData> mCourseData = new ArrayList<>();
+    private ArrayList<FetchData> mCourseData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_dash_board);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        toolbar.setTitle("Dashboard");
 
         LoadCourseData();
 
@@ -78,6 +80,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         final MenuItem AddCourses = menu.findItem(R.id.AddCourse);
         MenuItem ChangePassword = menu.findItem(R.id.PasswordChange);
         MenuItem UploadProfilePhoto = menu.findItem(R.id.UploadProfilePicture);
+        MenuItem MyCourses = menu.findItem(R.id.MyCourses);
         CourseList = findViewById(R.id.CourseList);
 
         View view = navigationView.getHeaderView(0);
@@ -89,10 +92,12 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             AddCourses.setVisible(false);
             ChangePassword.setVisible(false);
             UploadProfilePhoto.setVisible(false);
+            MyCourses.setVisible(false);
         } else {
             username.setText(UserName);
             ChangePassword.setVisible(true);
             UploadProfilePhoto.setVisible(true);
+            MyCourses.setVisible(true);
             FirebaseDatabase.getInstance().getReferenceFromUrl(CONSTANTS.DatabaseLink).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -114,8 +119,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(DashBoard.this, CourseDetails.class);
-                DownloadData downloadData = mCourseData.get(position);
-                intent.putExtra("CourseName", downloadData.getCourseName());
+                FetchData fetchData = mCourseData.get(position);
+                intent.putExtra("CourseName", fetchData.getCourseName());
                 startActivity(intent);
             }
         });
@@ -151,23 +156,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.dash_board, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
@@ -198,6 +186,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 break;
             }
             case R.id.FindCourses: {
+                startActivity(new Intent(DashBoard.this, FindCourse.class));
                 break;
             }
             case R.id.MyCourses: {
@@ -244,12 +233,12 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (ds.getKey() != null) {
-                        DownloadData downloadData = new DownloadData();
-                        downloadData.setCourseName(ds.getKey());
-                        downloadData.setDateAdded(ds.child("Date Added").getValue(String.class));
-                        downloadData.setVideoCount(ds.child("Video Count").getValue(String.class));
-                        downloadData.setPhotoUri(Uri.parse(ds.child("IconLink").getValue(String.class)));
-                        mCourseData.add(downloadData);
+                        FetchData fetchData = new FetchData();
+                        fetchData.setCourseName(ds.getKey());
+                        fetchData.setDateAdded(ds.child("Date Added").getValue(String.class));
+                        fetchData.setVideoCount(ds.child("Video Count").getValue(String.class));
+                        fetchData.setPhotoUri(Uri.parse(ds.child("IconLink").getValue(String.class)));
+                        mCourseData.add(fetchData);
                     }
                 }
                 UpdateList();
