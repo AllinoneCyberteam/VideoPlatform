@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MyCourses extends AppCompatActivity {
     public static final String DatabaseLink = "https://videoaplication-application.firebaseio.com";
-    private ArrayList<DownloadData> mCourseData = new ArrayList<>();
+    private ArrayList<FetchData> mCourseData = new ArrayList<>();
     private ArrayList<String> mArrayList = new ArrayList<>();
     private ListView CourseList;
     private FirebaseAuth mAuth;
@@ -59,12 +59,12 @@ public class MyCourses extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     for (int i = 0; i < mArrayList.size(); i++) {
                         if (ds.getKey() != null && ds.getKey().equals(mArrayList.get(i))) {
-                            DownloadData downloadData = new DownloadData();
-                            downloadData.setCourseName(ds.getKey());
-                            downloadData.setDateAdded(ds.child("Date Added").getValue(String.class));
-                            downloadData.setVideoCount(ds.child("Video Count").getValue(String.class));
-                            downloadData.setPhotoUri(Uri.parse(ds.child("IconLink").getValue(String.class)));
-                            mCourseData.add(downloadData);
+                            FetchData fetchData = new FetchData();
+                            fetchData.setCourseName(ds.getKey());
+                            fetchData.setDateAdded(ds.child("Date Added").getValue(String.class));
+                            fetchData.setVideoCount(ds.child("Video Count").getValue(String.class));
+                            fetchData.setPhotoUri(Uri.parse(ds.child("IconLink").getValue(String.class)));
+                            mCourseData.add(fetchData);
                         }
                     }
                 }

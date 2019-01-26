@@ -7,6 +7,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.PasswordTransformationMethod;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,21 +28,18 @@ import cyberteam.videoplatform.DashBoard;
 import cyberteam.videoplatform.R;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    Button Login;
-    Button forgotPassword;
-    EditText userId;
-    EditText userPassword;
-    TextView newUser;
-    String uid;
-    String UserName;
-    String EmailId;
-    String Password;
-    String DatabaseLink = "https://videoaplication-application.firebaseio.com";
-    FirebaseAuth mAuth;
-    ConstraintLayout mConstraintLayout;
-    Snackbar snackbar;
-    TextView passShow;
-    boolean setType = true;
+    private Button Login;
+    private Button forgotPassword;
+    private EditText userId;
+    private EditText userPassword;
+    private TextView newUser;
+    private String uid;
+    private String UserName;
+    private String DatabaseLink = "https://videoaplication-application.firebaseio.com";
+    private FirebaseAuth mAuth;
+    private ConstraintLayout mConstraintLayout;
+    private TextView passShow;
+    private boolean setType = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +69,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Login.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
         newUser.setOnClickListener(this);
+
+        userPassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    login(Login);
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -79,46 +88,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         switch (id) {
             case R.id.login: {
-                EmailId = userId.getText().toString();
-                Password = userPassword.getText().toString();
-                if (!EmailId.equals("") && !Password.equals("")) {
-                    mAuth.signInWithEmailAndPassword(EmailId, Password)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (!task.isSuccessful())
-                                        Toast.makeText(Login.this, "Invalid Details", Toast.LENGTH_SHORT).show();
-                                    else {
-                                        if (mAuth.getCurrentUser() != null) {
-                                            uid = mAuth.getCurrentUser().getUid();
-                                            FirebaseDatabase.getInstance(DatabaseLink).getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                    UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
-                                                    Intent intent = new Intent(Login.this, DashBoard.class);
-                                                    intent.putExtra("UserName", UserName);
-                                                    startActivity(intent);
-                                                }
-
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                    throw databaseError.toException();
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Snackbar snackbar = Snackbar.make(mConstraintLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
-                            snackbar.show();
-                        }
-                    });
-                } else {
-                    snackbar = Snackbar.make(view, "Enter Details", Snackbar.LENGTH_INDEFINITE);
-                    snackbar.show();
-                }
+                login(view);
                 break;
             }
             case R.id.forgotpassword: {
@@ -141,5 +111,48 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         passShow = findViewById(R.id.textView9);
         mConstraintLayout = findViewById(R.id.ConstraintLayout);
+    }
+
+    void login(View view) {
+        String emailId = userId.getText().toString();
+        String password = userPassword.getText().toString();
+        if (!emailId.equals("") && !password.equals("")) {
+            mAuth.signInWithEmailAndPassword(emailId, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful())
+                                Toast.makeText(Login.this, "Invalid Details", Toast.LENGTH_SHORT).show();
+                            else {
+                                if (mAuth.getCurrentUser() != null) {
+                                    uid = mAuth.getCurrentUser().getUid();
+                                    FirebaseDatabase.getInstance(DatabaseLink).getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            UserName = dataSnapshot.child(uid).child("UserName").getValue(String.class);
+                                            Intent intent = new Intent(Login.this, DashBoard.class);
+                                            intent.putExtra("UserName", UserName);
+                                            startActivity(intent);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                            throw databaseError.toException();
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Snackbar snackbar = Snackbar.make(mConstraintLayout, "Enter valid Credentials".toUpperCase(), Snackbar.LENGTH_SHORT);
+                    snackbar.show();
+                }
+            });
+        } else {
+            Snackbar snackbar = Snackbar.make(view, "Enter Details", Snackbar.LENGTH_INDEFINITE);
+            snackbar.show();
+        }
     }
 }

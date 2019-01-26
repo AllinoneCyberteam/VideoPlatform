@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -248,5 +247,11 @@ public class CourseDetails extends AppCompatActivity implements View.OnClickList
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(CourseDetails.this, android.R.layout.simple_list_item_1, ListArray);
         VideoList.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CourseDetails.this, DashBoard.class));
+        super.onBackPressed();
     }
 }

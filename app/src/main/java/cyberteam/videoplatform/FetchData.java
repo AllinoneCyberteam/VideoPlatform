@@ -2,7 +2,7 @@ package cyberteam.videoplatform;
 
 import android.net.Uri;
 
-class DownloadData {
+class FetchData {
     private Uri PhotoUri;
     private String DateAdded;
     private String CourseName;
